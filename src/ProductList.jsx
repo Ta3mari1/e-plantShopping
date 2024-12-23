@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './ProductList.css'
+import { useDispatch } from 'react-redux';
 import CartItem from './CartItem';
 import { addItem, removeItem, updateQuantity } from './CartSlice'
 function ProductList() {
     const [showCart, setShowCart] = useState(false);
-    const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
-
+    // const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
+    const dispatch = useDispatch();
     const plantsArray = [
         {
             category: "Air Purifying Plants",
@@ -293,7 +294,7 @@ function ProductList() {
                                         <div className='product-title'>{plants.name}</div>
                                         <div className='product-price '>{plants.cost}</div>
                                         <div>{plants.description}</div>
-                                        <button className='product-button' onClick={() => handleCartClick(plants)}>Add to Cart</button>
+                                        <button className='product-button' onClick={() => handleAddToCart(plants)}>Add to Cart</button>
                                     </div>
 
                                 ))}
